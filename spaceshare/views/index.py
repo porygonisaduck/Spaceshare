@@ -103,4 +103,23 @@ def create_profile():
 
     return flask.render_template("create.html")
 
+def save_file_to_disk():
+    """Save the image file to the disk."""
+    fileobj = flask.request.files["file"]
+    filename = fileobj.filename
 
+    # Compute base name (filename without directory).
+    # We use a UUID to avoid
+    # clashes with existing files,
+    # and ensure that the name is compatible with the
+    # filesystem. For best practive,
+    # we ensure uniform file extensions (e.g.
+    # lowercase).
+    stem = uuid.uuid4().hex
+    suffix = pathlib.Path(filename).suffix.lower()
+    uuid_basename = f"{stem}{suffix}"
+
+    # Save to disk
+    path = insta485.app.config["UPLOAD_FOLDER"]/uuid_basename
+    fileobj.save(path)
+    return uuid_basename
