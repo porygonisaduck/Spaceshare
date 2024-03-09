@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="/static/css/style.css">
+        <title>insta485</title>
+    </head>
+
+    <body>
+        <div class="pageHead">
+            <h2 class="home"><a href="/">Home</a></h2>
+            <h2 class="profile">login</h2>
+        </div>
+        
+        <div class="user_info">
+        <form action="/accounts/?target=/" method="post" enctype="multipart/form-data">
+            <input type="text" name="username" required/>
+            <input type="password" name="password" required/>
+            <input type="submit" value="login"/>
+            <input type="hidden" name="operation" value="login"/>
+          </form>
+          <h3>Don't have an account?</h3>
+            <a href="/accounts/create/">Sign Up</a>
+        </div>
+    </body>
+
+</html>
