@@ -4,24 +4,30 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/static/css/style.css">
-        <script src="/static/js/script.js" defer></script>
+        <script src="/static/js/script.js"></script>
         <title>Spaceshare</title>
     </head>
 
-    <body> 
-        <div id="phone">
-        <h2>User Info</h2>
-        <form class="inline" action="/accounts/?target=/" method="post" enctype="multipart/form-data">
-            <label for="textInput">Fullname</label>
-            <input type="text" name="fullane" required/>
-            <label for="textInput">Username</label>
-            <input type="text" name="username" required/>
-            <label for="textInput">Email</label>
-            <input type="text" name="email" required/>
-            <label for="textInput">Password</label>
-            <input type="text" name="password" required/>
-            <input type="hidden" name="operation" value="create"/>
-          </form>
+    <body>
+        <div class="container">
+            <div class="center">
+                <h2>user info:</h2>
+                <br>
+                <form class="inline" action="/accounts/?target=/" method="post" enctype="multipart/form-data">
+                    <label for="textInput">fullname</label><br>
+                    <input type="text" name="fullname" required/>
+                    <label for="textInput">username</label><br>
+                    <input type="text" name="username" required/>
+                    <label for="textInput">email</label><br>
+                    <input type="text" name="email" required/>
+                    <label for="textInput">password</label><br>
+                    <input type="password" name="password" required/>
+                    <label for="textInput">password (re-type)</label><br>
+                    <input type="password" name="password2" required/>
+                    <input type="submit" name="signup" value="sign up"/>
+                    <input type="hidden" name="operation" value="create"/>
+                </form>
+            </div>
         </div>
 
     </body>

@@ -11,10 +11,11 @@
     <body> 
         <div class="container">
             <div class="center">
-                <h2>OTD verification:</h2>
+                <h2>city:</h2>
                 <br>
-                <form class="inline" action="/accounts/set_password/" method="post" enctype="multipart/form-data">
-                    <input type="text" name="otd_value" minlength="4" maxlength="4" required/>
+                <form class="inline" action="/accounts/account_created/" method="post" enctype="multipart/form-data">
+                    <input type="text" name="city" required/>
+                    <input type="submit" name="find" value="Find Me">
                 </form>
             </div>
         </div>

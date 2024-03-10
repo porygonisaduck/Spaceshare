@@ -18,43 +18,10 @@ def show_index():
 
     if 'username' not in flask.session:
         return flask.redirect('/accounts/login/')
+    
     user, connection = get_user_and_connection()
 
-    # Query database for posts by the user
-    posts = get_user_posts(user, connection)
-
-    # Get posts by people the user is following
-
-    cur = connection.execute(
-        "SELECT * "
-        "FROM following "
-        "WHERE username1 == ? ",
-        (user, )
-    )
-    following = cur.fetchall()
-
-    for person in following:
-        cur = connection.execute(
-            "SELECT * "
-            "FROM posts "
-            "WHERE owner == ? ",
-            (person['username2'], )
-        )
-        add_posts = cur.fetchall()
-        for new_post in add_posts:
-            posts.append(new_post)
-
-    # Reorder the posts with highest postid first
-
-    posts.sort(key=post_num, reverse=True)
-
-    # Add all other info posts need
-    for post in posts:
-        get_post_info(post, user, connection)
-
-    # Add database info to context
-    context = {"logname": user, "posts": posts}
-    return flask.render_template("index.html", **context)
+    return flask.render_template("index.html")
 
 
 @spaceshare.app.route('/accounts/edit/', methods=['GET'])
@@ -95,19 +62,43 @@ def delete_profile():
     return flask.render_template("delete.html", **context)
 
 
+################### CREATE ACCOUNT ###################
+
 @spaceshare.app.route('/accounts/phone_number/', methods=['GET'])
 def get_phone():
     """Display /accounts/phone_number/ route."""
     return flask.render_template("phone_number.html")
 
+
 @spaceshare.app.route('/accounts/otp/', methods=['POST'])
 def get_otp():
     """Display /accounts/otp/ route."""
 
-    phone_number = flask.request.form['phone-number']
+    phone_number = flask.request.form['phone_number']
+    flask.session["phone_number"] = phone_number
 
-    print(phone_number)
     return flask.render_template("otp.html")
+
+
+@spaceshare.app.route('/accounts/set_password/', methods=['POST'])
+def set_password():
+    """Display /accounts/set_password/ route."""
+
+    return flask.render_template("set_password.html")
+
+
+@spaceshare.app.route('/accounts/set_city/', methods=['POST'])
+def set_city():
+    """Display /accounts/set_city/ route."""
+
+    return flask.render_template("set_city.html")
+
+
+@spaceshare.app.route('/accounts/account_created/', methods=['POST'])
+def account_created():
+    """Display /accounts/account_created/ route."""
+
+    return flask.render_template("account_created.html")
 
 
 @spaceshare.app.route('/accounts/create/', methods=['GET'])
@@ -139,6 +130,9 @@ def ensure_user_in_database():
     if len(cur.fetchall()) == 0:  # User is not in database
         flask.abort(404)
     return user, connection
+
+
+################### END OF CREATE ACCOUNT ###################
 
 
 def save_file_to_disk():

@@ -147,6 +147,7 @@ def handle_account_create(target, connection):
 
     user = flask.request.form['username']
     password = flask.request.form['password']
+    print(flask.request.form)
     fullname = flask.request.form['fullname']
     email = flask.request.form['email']
 
