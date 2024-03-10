@@ -95,13 +95,51 @@ def delete_profile():
     return flask.render_template("delete.html", **context)
 
 
+@spaceshare.app.route('/accounts/phone_number/', methods=['GET'])
+def get_phone():
+    """Display /accounts/phone_number/ route."""
+    return flask.render_template("phone_number.html")
+
+@spaceshare.app.route('/accounts/otp/', methods=['POST'])
+def get_otp():
+    """Display /accounts/otp/ route."""
+
+    phone_number = flask.request.form['phone-number']
+
+    print(phone_number)
+    return flask.render_template("otp.html")
+
+
 @spaceshare.app.route('/accounts/create/', methods=['GET'])
 def create_profile():
     """Display /accounts/create/ route."""
-    if 'username' in flask.session:
-        return flask.redirect('/accounts/edit/')
-
     return flask.render_template("create.html")
+
+
+def get_user_and_connection():
+    """Get the user and connection."""
+    user = flask.session['username']
+
+    # Connect to database
+    connection = spaceshare.model.get_db()
+    return user, connection
+
+
+def ensure_user_in_database():
+    """Ensure the user in the database."""
+    user, connection = get_user_and_connection()
+
+    # ENSURE PERSON ACCESSING THIS PAGE IS IN THE DATABASE
+    cur = connection.execute(
+        "SELECT * "
+        "FROM users "
+        "WHERE username == ?",
+        (user, )
+    )
+    if len(cur.fetchall()) == 0:  # User is not in database
+        flask.abort(404)
+    return user, connection
+
 
 def save_file_to_disk():
     """Save the image file to the disk."""
@@ -120,6 +158,17 @@ def save_file_to_disk():
     uuid_basename = f"{stem}{suffix}"
 
     # Save to disk
-    path = insta485.app.config["UPLOAD_FOLDER"]/uuid_basename
+    path = spaceshare.app.config["UPLOAD_FOLDER"]/uuid_basename
     fileobj.save(path)
     return uuid_basename
+
+
+def get_user_profile(user, connection):
+    """Get the users profile."""
+    cur = connection.execute(
+        "SELECT * "
+        "FROM users "
+        "WHERE username == ? ",
+        (user, )
+    )
+    return cur.fetchall()[0]

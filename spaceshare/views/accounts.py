@@ -35,7 +35,7 @@ def handle_account():
     target = '/'
     if flask.request.args.get('target'):
         target = flask.request.args['target']
-    connection = insta485.model.get_db()
+    connection = spaceshare.model.get_db()
 
     if flask.request.form['operation'] == 'login':
         user = flask.request.form['username']
@@ -59,7 +59,7 @@ def handle_account_login(user, password):
     if user == '' or password == '':
         flask.abort(400)
     encrypt_pass = set_password(password)
-    connection = insta485.model.get_db()
+    connection = spaceshare.model.get_db()
     cur = connection.execute(
         "SELECT password "
         "FROM users "
@@ -144,17 +144,14 @@ def handle_account_password(target, connection):
 
 def handle_account_create(target, connection):
     """Allow user to create profile."""
+
     user = flask.request.form['username']
     password = flask.request.form['password']
     fullname = flask.request.form['fullname']
     email = flask.request.form['email']
 
-    fileobj = flask.request.files["file"]
-
-    uuid_basename = save_file_to_disk()
-
     if (user == '' or password == '' or
-            fullname == '' or email == '' or fileobj == ''):
+            fullname == '' or email == ''):
         flask.abort(400)
     hash_pass = set_password(password)
     cur = connection.execute(
@@ -163,12 +160,15 @@ def handle_account_create(target, connection):
         "WHERE username == ? ",
         (user, )
     )
+
+    # duplicate user but we are currently testing
     if cur.fetchone() is not None:
         flask.abort(409)
+    
     connection.execute(
-        "INSERT INTO users (username, fullname, email, filename, password)"
-        "VALUES (?,?,?,?,?)",
-        (user, fullname, email, uuid_basename, hash_pass, )
+        "INSERT INTO users (username, fullname, email, password)"
+        "VALUES (?,?,?,?)",
+        (user, fullname, email, hash_pass, )
     )
     flask.session['username'] = user
     return flask.redirect(target)
@@ -193,7 +193,7 @@ def handle_account_delete(target, connection):
         # stem = uuid.uuid4().hex
         # suffix = pathlib.Path(filename).suffix.lower()
         # uuid_basename = f"{stem}{suffix}"
-        path = insta485.app.config["UPLOAD_FOLDER"]/filename
+        path = spaceshare.app.config["UPLOAD_FOLDER"]/filename
         path.unlink()
 
     cur = connection.execute(
@@ -203,7 +203,7 @@ def handle_account_delete(target, connection):
         (user, )
     )
     filename2 = cur.fetchone()['filename']
-    path = insta485.app.config["UPLOAD_FOLDER"]/filename2
+    path = spaceshare.app.config["UPLOAD_FOLDER"]/filename2
     path.unlink()
 
     connection.execute(

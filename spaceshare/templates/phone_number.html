@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <script src="/static/js/script.js" defer></script>
+        <title>Spaceshare</title>
+    </head>
+
+    <body> 
+        <div id="phone">
+        <h2>phone-number</h2>
+        <!-- /?target=/ -->
+        <form class="inline" action="/accounts/otp/" method="post" enctype="multipart/form-data">
+            <label for="textInput">1+</label>
+            <input type="text" name="phone-number" minlength="10" maxlength="10" required/>
+          </form>
+        </div>
+
+    </body>
+
+</html>

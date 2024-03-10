@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/static/css/style.css">
-        <title>insta485</title>
+        <title>Spaceshare</title>
     </head>
 
     <body>
-        <div class="pageHead">
-            <h2 class="home"><a href="/">Home</a></h2>
-            <h2 class="profile">login</h2>
-        </div>
+        <h1 id="title">Spaceshare</h1>
         
         <div class="user_info">
-        <form action="/accounts/?target=/" method="post" enctype="multipart/form-data">
-            <input type="text" name="username" required/>
-            <input type="password" name="password" required/>
-            <input type="submit" value="login"/>
-            <input type="hidden" name="operation" value="login"/>
-          </form>
-          <h3>Don't have an account?</h3>
-            <a href="/accounts/create/">Sign Up</a>
+        <div id="home-btns">
+            <a class="button" href="/accounts/phone_number/">Create Account</a>
+            <a class="button" href="login.html">Login</a>
         </div>
     </body>
 

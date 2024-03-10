@@ -1,1 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap");
 
+#title {
+    text-align: center;
+}
+
+.button {
+    background-color: blue;
+    color: white;
+    border-radius: 40px;
+    text-decoration: none;
+    padding: 10px 40px;
+}
+ 
+body {
+    font-family: "Inika";
+}
+
+#phone {
+    margin-top: 40vh;
+    margin-left: 20px
+}
+
+.inline {
+    display: inline-block;
+}
+
+label {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+input {
+    border-width: 0px 0px 2px 0px;
+    border-color: black;
+    font-weight: bold;
+    font-size: 1.5em;
+    width: 75%;
+    font-family: "Inika";
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <script src="/static/js/script.js" defer></script>
+        <title>Spaceshare</title>
+    </head>
+
+    <body> 
+        <div id="phone">
+        <h2>OTD verification</h2>
+        <form class="inline" action="/accounts/create" method="post" enctype="multipart/form-data">
+            <input type="text" name="otd-value" minlength="4" maxlength="4" required/>
+          </form>
+        </div>
+
+    </body>
+
+</html>
