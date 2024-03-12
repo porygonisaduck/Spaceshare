@@ -16,10 +16,10 @@ def show_index():
     """Display / route."""
     # flask.session.clear()
 
-    if 'username' not in flask.session:
+    if 'phone_number' not in flask.session:
         return flask.redirect('/accounts/login/')
     
-    user, connection = get_user_and_connection()
+    # user, connection = get_user_and_connection()
 
     return flask.render_template("index.html")
 
@@ -172,7 +172,7 @@ def get_user_profile(user, connection):
 def download_file(filename):
     """Return image file from disk."""
     # unauthenicated user accessing file
-    if 'username' not in flask.session:
+    if 'phone_number' not in flask.session:
         flask.abort(403)
     print(spaceshare.app.config['UPLOAD_FOLDER'])
     return flask.send_from_directory(spaceshare.app.config['UPLOAD_FOLDER'],
