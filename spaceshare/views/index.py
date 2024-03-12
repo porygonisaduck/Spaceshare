@@ -166,3 +166,14 @@ def get_user_profile(user, connection):
         (user, )
     )
     return cur.fetchall()[0]
+
+
+@spaceshare.app.route('/uploads/<filename>')
+def download_file(filename):
+    """Return image file from disk."""
+    # unauthenicated user accessing file
+    if 'username' not in flask.session:
+        flask.abort(403)
+    print(spaceshare.app.config['UPLOAD_FOLDER'])
+    return flask.send_from_directory(spaceshare.app.config['UPLOAD_FOLDER'],
+                                     filename, as_attachment=True)
