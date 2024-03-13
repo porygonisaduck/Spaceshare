@@ -17,7 +17,7 @@ def show_index():
     # flask.session.clear()
 
     if 'phone_number' not in flask.session:
-        return flask.redirect('/accounts/login/')
+        return flask.redirect('/accounts/phone_number/')
     
     # user, connection = get_user_and_connection()
 
@@ -133,6 +133,18 @@ def ensure_user_in_database():
 
 
 ################### END OF CREATE ACCOUNT ###################
+
+
+@spaceshare.app.route('/map/', methods=['GET'])
+def show_map():
+    """Display /map/ route."""
+    return flask.render_template("map.html")
+
+
+@spaceshare.app.route('/profile/', methods=['GET'])
+def show_profile():
+    """Display /profile/ route."""
+    return flask.render_template("profile.html")
 
 
 def save_file_to_disk():

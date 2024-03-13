@@ -15,13 +15,14 @@
 body {
     font-family: "Inika";
     margin: 0px;
+    font-size: 0.85em;
 }
 
 .container {
     display: flex;
     align-items: center;
     height: 100vh;
-    /* margin-left: 20px; */
+    margin-left: 20px;
 }
 
 .center {
@@ -68,4 +69,91 @@ input {
     height: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
+}
+
+#top-icons {
+    background-color: white;
+    border: 2px solid black;
+    position: fixed;
+    right: 0;
+    top: 8%;
+    border-radius: 20px 0px 0px 20px;
+    padding: 5px;
+}
+
+#bottom-icons {
+    background-color: white;
+    border: 2px solid black;
+    position: fixed;
+    right: 0;
+    bottom: 8%;
+    border-radius: 20px 0px 0px 20px;
+    padding: 5px;
+}
+
+div#top-icons i {
+    display: block;
+    padding: 10px;
+}
+
+div#bottom-icons i {
+    display: block;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+#current {
+    width: 40%;
+    margin: 5px;
+}
+
+#distance {
+    width: 15%;
+    margin: 5px;
+}
+
+#header i {
+    margin: 5px;
+}
+
+div#map {
+    height: 90vh; /* temp value */
+}
+
+#map img {
+    max-width: 100%;
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 9999; /* Ensure it's above other elements */
+}
+  
+.temp-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
 }
