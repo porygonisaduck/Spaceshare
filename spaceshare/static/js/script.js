@@ -4,6 +4,11 @@ function redirectToPage(url, delay){
     }, delay);
 }
 
+document.getElementById("houseListing").addEventListener("submit", function (e) {
+  e.preventDefault();
+  getListing(e.target);
+});
+
 function addListing() {
     var overlay = document.createElement('div');
     overlay.className = 'overlay';
@@ -11,25 +16,43 @@ function addListing() {
     var tempPage = document.createElement('div');
     tempPage.className = 'temp-page';
     tempPage.innerHTML = `
-      <i aria-label="exit-listing" class="fa-2x fa-solid fa-angle-left"></i>
-      <h3>Add Listing to Registered Place:</h3>
-      <i aria-label="map-pin" class="fa-2x fa-solid fa-map-pin"></i>
-      <form class="inline" action="" method="" enctype="">
-        <label for="textInput">Listing Headline</label>
+      <i aria-label="exit-listing" class="fa-2x fa-solid fa-angle-left" onclick="closeListing()"></i>
+      <h3 style="font-size: xx-large">Add Listing to Registered Place:</h3>
+      <form class="inline" action="" method="" enctype="" id="houseListing">
+        <label for="textInput">Listing Headline
         <input type="text" name="headline" required/>
-        <label for="textInput">Description of Space</label>
+        </label>
+        <label for="textInput">Description of Space
         <input type="text" name="description" required/>
-        <label for="textInput">Item Guidelines</label>
+        </label>
+        <label for="textInput">Item Guidelines
         <input type="text" name="guidlines" required/>
-      </form>
-      
-      <button onclick="closeListing()">Close</button>`;
+        </label>
+        <input type="submit" value="Submit">
+      </form>`;
   
     // Append temporary page to overlay
     overlay.appendChild(tempPage);
   
     // Append overlay to body
     document.body.appendChild(overlay);
+  }
+
+  function getListing(form) {
+    var formData = new FormData(form);
+
+    document.getElementById("all-posts").innerHTML += `
+    <div class="post">
+        <div class="left-side">
+            <h5 class="text-style">Little Village | Chicago</h5>
+            <p class="text-style">0.1 miles away</p>
+            <p class="text-style">5x10 small backyard patio | apt.
+                Non-flammable items please!</p>
+        </div>
+        <div class="right-side">
+            <img class="post-image" src="/uploads/little-village-1800x853.png">
+        </div>
+    </div>`;
   }
   
   function closeListing() {

@@ -33,18 +33,27 @@ body {
     display: inline-block;
 }
 
+form {
+    border: 5px solid;
+    box-shadow: 5px 10px rgba(128, 128, 128, 1);
+    border-radius: 1%;
+}
+
 label {
-    font-size: 1.5em;
+    font-size: 2.6em;
     font-weight: bold;
+    float: left;
 }
 
 input {
     border-width: 0px 0px 2px 0px;
     border-color: black;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 2.6em;
     width: 85%;
     font-family: "Inika";
+    display: block;
+    margin-bottom: 10px;
 }
 
 #all-posts {
@@ -52,10 +61,12 @@ input {
 }
 
 .post {
-    border: outset rgba(0, 0, 0, 1) .2px;
+    border: solid rgba(0, 0, 0) 2px;
+    border-radius: 1%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding-left: 10px;
+    margin-bottom: 10px;
 }
 
 .left-side {
