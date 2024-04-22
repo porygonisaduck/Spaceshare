@@ -33,18 +33,27 @@ body {
     display: inline-block;
 }
 
+form {
+    border: 5px solid;
+    box-shadow: 5px 10px rgba(128, 128, 128, 1);
+    border-radius: 1%;
+}
+
 label {
-    font-size: 1.5em;
+    font-size: 2.6em;
     font-weight: bold;
+    float: left;
 }
 
 input {
     border-width: 0px 0px 2px 0px;
     border-color: black;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 2.6em;
     width: 85%;
     font-family: "Inika";
+    display: block;
+    margin-bottom: 10px;
 }
 
 #all-posts {
@@ -52,14 +61,24 @@ input {
 }
 
 .post {
-    border-bottom: 3px solid black;
+    border: solid rgba(0, 0, 0) 2px;
+    border-radius: 1%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding-left: 10px;
+    margin-bottom: 10px;
 }
 
 .left-side {
     padding-right: 10px;
+    font-size: xx-large;
+    vertical-align: auto;
+}
+
+.right-side {
+    border-left: solid rgb(128, 128, 128, .3) 3px;
+    border-right: solid rgb(128, 128, 128, .3) 3px;
+    border-radius: 12px;
 }
 
 .post-image {
@@ -69,6 +88,7 @@ input {
     height: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
+    border-radius: 1%;
 }
 
 #top-icons {
@@ -158,4 +178,11 @@ div#map {
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
+}
+
+.text-style {
+    padding-top: 12%;
+    padding-bottom: 12%;
+    border: solid 1px rgba(0, 0, 0, .05);
+    box-shadow: 1px 2px rgba(0, 0, 0, 0.5);
 }

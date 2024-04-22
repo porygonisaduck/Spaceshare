@@ -165,7 +165,7 @@ def handle_account_create(target, connection):
     # duplicate user but we are currently testing
     if cur.fetchone() is not None:
         flask.abort(409)
-    
+
     connection.execute(
         "INSERT INTO users (username, fullname, email, password)"
         "VALUES (?,?,?,?)",
@@ -214,4 +214,3 @@ def handle_account_delete(target, connection):
     )
     flask.session.clear()
     return flask.redirect(target)
-

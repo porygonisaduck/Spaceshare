@@ -6,7 +6,6 @@ URLs include:
 """
 import pathlib
 import uuid
-import arrow
 import flask
 import spaceshare
 from flask import send_from_directory
@@ -19,7 +18,7 @@ def show_index():
 
     if 'phone_number' not in flask.session:
         return flask.redirect('/accounts/phone_number/')
-    
+
     # user, connection = get_user_and_connection()
 
     return flask.render_template("index.html")
