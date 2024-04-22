@@ -1,18 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="/static/css/style.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
-        <title>Spaceshare</title>
-    </head>
-    <body>
-
-        <h1>Profile</h1>
-        <a href="/">
-            <i aria-label="explore" class="fa-2x fa-solid fa-bars"></i>
-        </a>
-
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spaceshare</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
+    <style>
+        /* Additional Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 50px auto 0; /* Adjust top margin as needed */
+            padding: 20px;
+        }
+        .left-move {
+            margin-left: .5cm;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            margin: 5px 0;
+        }
+        p {
+            margin: 5px 0;
+        }
+        .post {
+            display: flex;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .left-side {
+            flex: 1;
+        }
+        .right-side {
+            flex: 0 0 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .post-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-move">
+            <a href="/" >
+                <img class="logo" src="{{ url_for('upload_file', filename=logo)}}" alt="Logo">
+            </a>
+            <h1>Profile</h1>
+            <h2>Kai</h2>
+            <p>Phone Number: 123-456-7890</p>
+            <p class="bottom-three">Home Address: State Street, Ann Arbor</p>
+            <p>Past Purchases: </p>
+            <p class="bottom-three">No past leasings...</p>
+            <br>
+            <p>My Subleases: </p>
+            <div class="post">
+                <div class="left-side">
+                    <h5>State Street | Ann Arbor</h5>
+                    <p>0.1 miles away</p>
+                    <br>
+                    <p>$800 per month</p>
+                    <br>
+                    <p>5x10 square feet | apt.</p>
+                    <p>10 minute walk from diag!</p>
+                    <p>One parking spot included!</p>
+                </div>
+                <div class="right-side">
+                    <img class="post-image" src="{{ url_for('upload_file', filename=apartment)}}">
+                </div>
+            </div>
+            <div class="post">
+                <div class="left-side">
+                    <h5>South University Avenue | Ann Arbor</h5>
+                    <p>0.5 miles away</p>
+                    <br>
+                    <p>$1200 per month</p>
+                    <br>
+                    <p>9x20 square feet | apt.</p>
+                    <p>Spacious skyrise apartment fully furnished!</p>
+                    <p>Pets are allowed!</p>
+                </div>
+                <div class="right-side">
+                    <img class="post-image" src="{{ url_for('upload_file', filename=apartment2)}}">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
