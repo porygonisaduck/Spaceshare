@@ -9,6 +9,7 @@ import uuid
 import arrow
 import flask
 import spaceshare
+from flask import send_from_directory
 
 
 @spaceshare.app.route('/', methods=['GET'])
@@ -144,7 +145,13 @@ def show_map():
 @spaceshare.app.route('/profile/', methods=['GET'])
 def show_profile():
     """Display /profile/ route."""
-    return flask.render_template("profile.html")
+    context = {
+        "apartment": "apartment.jpg",
+        "apartment2": "apartment2.jpg",
+        "logo": "logo.png"
+    }
+
+    return flask.render_template("profile.html", **context)
 
 
 def save_file_to_disk():
@@ -181,7 +188,7 @@ def get_user_profile(user, connection):
 
 
 @spaceshare.app.route('/uploads/<filename>')
-def download_file(filename):
+def upload_file(filename):
     """Return image file from disk."""
     # unauthenicated user accessing file
     if 'phone_number' not in flask.session:
