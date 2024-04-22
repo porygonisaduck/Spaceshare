@@ -147,7 +147,7 @@ def show_profile():
     """Display /profile/ route."""
     context = {
         "apartment": "apartment.jpg",
-        "apartment2": "apartment2.webp",
+        "apartment2": "apartment2.jpg",
         "logo": "logo.png"
     }
 
