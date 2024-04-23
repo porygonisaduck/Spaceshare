@@ -62,8 +62,7 @@ function addListing() {
     }
   }
 
-
-  function sendOffer() {
+  function sendOffer(headline, location, distance, description, recommendedDuration) {
     var overlay = document.createElement('div');
     overlay.className = 'overlay';
   
@@ -72,10 +71,16 @@ function addListing() {
     tempPage.innerHTML = `
       <i aria-label="exit-listing" class="fa-2x fa-solid fa-angle-left" onclick="closeListing()"></i>
       <h3 style="">Send offer for location:</h3>
+      <p><strong>${headline}</strong></p>
+      <p>${location}</p>
+      <p>${distance}</p>
+      <p><strong>Sharer Description</strong>: ${description}</p>
+      <p><strong>Recommended Duration</strong>: ${recommendedDuration}</p>
       <form class="inline" action="" method="" enctype="" id="">
-        <label for="textInput">Offer (in USD)
-        <input type="text" name="offer" required/>
-        </label>
+        <label for="offerInput">Offer (in USD)</label>
+        <input type="text" name="offer" id="offerInput" required/>
+        <label for="durationInput">Duration</label>
+        <input type="text" name="duration" id="durationInput" required/>
         <input type="submit" value="Send Offer">
       </form>`;
   
@@ -84,7 +89,8 @@ function addListing() {
   
     // Append overlay to body
     document.body.appendChild(overlay);
-  }
+}
+
 
   function closeListing() {
     var overlay = document.querySelector('.overlay');
