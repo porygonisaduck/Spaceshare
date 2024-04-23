@@ -17,7 +17,7 @@ function addListing() {
     tempPage.className = 'temp-page';
     tempPage.innerHTML = `
       <i aria-label="exit-listing" class="fa-2x fa-solid fa-angle-left" onclick="closeListing()"></i>
-      <h3 style="font-size: xx-large">Add Listing to Registered Place:</h3>
+      <h3 style="">Add Listing to Registered Place:</h3>
       <form class="inline" action="" method="" enctype="" id="houseListing">
         <label for="textInput">Listing Headline
         <input type="text" name="headline" required/>
