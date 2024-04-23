@@ -61,3 +61,34 @@ function addListing() {
       overlay.remove();
     }
   }
+
+
+  function sendOffer() {
+    var overlay = document.createElement('div');
+    overlay.className = 'overlay';
+  
+    var tempPage = document.createElement('div');
+    tempPage.className = 'temp-page';
+    tempPage.innerHTML = `
+      <i aria-label="exit-listing" class="fa-2x fa-solid fa-angle-left" onclick="closeListing()"></i>
+      <h3 style="">Send offer for location:</h3>
+      <form class="inline" action="" method="" enctype="" id="">
+        <label for="textInput">Offer (in USD)
+        <input type="text" name="offer" required/>
+        </label>
+        <input type="submit" value="Send Offer">
+      </form>`;
+  
+    // Append temporary page to overlay
+    overlay.appendChild(tempPage);
+  
+    // Append overlay to body
+    document.body.appendChild(overlay);
+  }
+
+  function closeListing() {
+    var overlay = document.querySelector('.overlay');
+    if (overlay) {
+      overlay.remove();
+    }
+  }
